@@ -19,26 +19,25 @@ const ragPipeline = new RAGPipeline();
 const sessionManager = new SessionManager();
 
 // ✅ CORS setup
+// Enable CORS - Updated for production
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "http://localhost:3003",
-    "http://127.0.0.1:3003"
+    "https://rag-chatbot-frontend.netlify.app",  // Your actual Netlify URL
+    "https://*.netlify.app"
   ],
   credentials: true,
   methods: ["GET", "POST", "DELETE", "PUT"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
-// ✅ Socket.io CORS
+/// Socket.io setup - Updated for production
 const io = socketIo(server, {
   cors: {
     origin: [
       "http://localhost:3000",
-      "http://127.0.0.1:3000",
-      "http://localhost:3003",
-      "http://127.0.0.1:3003"
+      "https://rag-chatbot-frontend.netlify.app",  // Your actual Netlify URL
+      "https://*.netlify.app"
     ],
     methods: ["GET", "POST"],
     credentials: true
